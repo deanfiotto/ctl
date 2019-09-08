@@ -1,0 +1,44 @@
+Title: Iowa Indigency Calculator
+Author: Dean Fiotto
+Before:<link rel="stylesheet" type="text/css" href="https://suffolklitlab.org/howto/qna/style/style.css">
+<div id="icon" style="background-size: 110px 99px;background-image: url('https://suffolklitlab.org/howto/qna/images/maxheadroom.gif');"></div>
+<h2 style="text-align:center;">Iowa Indigency Calculator</h2>
+<p><b>This is a <a href="http://www.codingthelaw.org/">class project</a>. You should not rely on it as a source of legal information. It is likely incomplete.</b></p>
+<p>Answer the following questions to see if someone qualifies for appointment of counsel.</p>
+
+Q(1): Does the person make an amount of money less than or equal to $7.51 an hour ($15,613 per year)? Add $2.66 per hour ($5,525 per year) for each family member that the person has. 
+A: Yes.
+	Q(1.1): That person may qualify as indigent in Iowan state criminal courts unless the court determines that the person is able to pay for the cost of an attorney to represent the person on the pending case. Would you like to know more about how the court may make such a determination?
+	A: Yes.
+		Q(1.1.1): In making the determination of a person’s ability to pay for the cost of an attorney, the court shall consider not only the person’s income, but also the availability of any assets subject to execution, including but not limited to cash, stocks, bonds, and any other property which may be applied to the satisfaction of judgments, and the seriousness of the charge or nature of the case. 
+	A: No thank you. 
+		Q(1.1.2):GOTO:FINAL
+A: No. 
+	Q(1.2):GOTO:2
+
+Q(2): Does the person make an amount of money greater than $7.51 an hour ($15,613 per year) but less than $12.01 per hour ($24,980 per year)? Add $2.66 per hour ($5,525 per year) for each family member that the person has.  
+A: Yes. 
+	Q(2.1): That person may not qualify as indigent unless the court makes a written finding that not appointing counsel on the pending case would cause the person substantial hardship. Would you like to know more about how the court may make such a determination?
+	A: Yes.
+		Q(2.1.1): In determining whether substantial hardship would result, the court shall consider not only the person’s income, but also the availability of any assets subject to execution, including but not limited to cash, stocks, bonds, and any other property which may be applied to the satisfaction of judgments, and the seriousness of the charge or nature of the case. 
+	A: No thank you. 
+		Q(2.1.2):GOTO:FINAL
+A: No. 
+	Q(2.2):GOTO:3
+
+Q(3): Does the person make an amount of money greater than $12.01 an hour ($24,980 per year)? Add $4.25 per hour ($8,840 per year) for each family member that the person has.  
+A: Yes. 
+	Q(3.1): Is that person charged with a felony in the matter at hand? 
+	A: Yes. 
+		Q(3.1.1): That person may qualify as indigent if the court makes a written finding that not appointing counsel would cause the person substantial hardship. Would you like to know more about how the court may make such a finding?
+		A: Yes. 
+			Q(3.1.1.1): In determining whether substantial hardship would result, the court shall consider not only the person’s income, but also the availability of any assets subject to execution, including but not limited to cash, stocks, bonds, and any other property which may be applied to the satisfaction of judgments, and the seriousness of the charge or nature of the case.
+		A: No thank you. 
+			Q(3.1.1.2):GOTO:FINAL
+	A: No. 
+		Q(3.1.2): That person will likely not be determined indigent in an Iowan state court. 
+A: No. 
+	Q(3.2):GOTO:1
+	
+
+Q(FINAL): Thank you for using this service. Please keep in mind the following as it pertains to acquiring indigency status from an Iowa state court. A determination of whether a person is entitled to an appointed attorney shall be made on the basis of an affidavit of financial status submitted at the time of the person’s initial appearance or at such later time as a request for court appointment of counsel is made. The state public defender shall adopt rules prescribing the form and content of the affidavit of financial status. The affidavit of financial status shall be signed under penalty of perjury and shall contain sufficient information to allow the determination to be made of whether the person is entitled to an appointed attorney under this section. If the person is granted an appointed attorney, the affidavit of financial status shall be filed and permanently retained in the person’s court file.
