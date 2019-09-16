@@ -81,3 +81,6 @@ A: No
 Q(nomore): I'm afraid there's nothing else I can help you with. I hope you have a nice day.
 
 Q(FINAL): Thank you for using this service. Please keep in mind the following as it pertains to acquiring indigency status from an Iowa state court. A determination of whether a person is entitled to an appointed attorney shall be made on the basis of an affidavit of financial status submitted at the time of the person’s initial appearance or at such later time as a request for court appointment of counsel is made. The state public defender shall adopt rules prescribing the form and content of the affidavit of financial status. The affidavit of financial status shall be signed under penalty of perjury and shall contain sufficient information to allow the determination to be made of whether the person is entitled to an appointed attorney under this section. If the person is granted an appointed attorney, the affidavit of financial status shall be filed and permanently retained in the person’s court file.
+
+
+
