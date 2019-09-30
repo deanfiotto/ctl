@@ -1,0 +1,84 @@
+Title: Iowa Indigency Calculator
+Author: Dean Fiotto
+Before:<input type="hidden" name="name" value="Idigent Docx"/>
+<input type="hidden" name="docx_uri" value="https://github.com/deanfiotto/ctl/blob/master/Coding%20doc.docx"/>
+After: 
+<script>
+function fedpov(house,income,percentage){
+	// Determines if your income is less than or equal to 
+	// a percentage of the 2018 federal poverty guidelines 
+	// for the contiguous United States. See
+	// https://www.federalregister.gov/documents/2018/01/18/2018-00814/annual-update-of-the-hhs-poverty-guidelines
+	
+		var line = NaN;
+	
+		if (house == 1) {
+			line = 12490;
+		} else if (house == 2) {
+			line = 16910;
+		} else if (house == 3) {
+			line = 21330;
+		} else if (house == 4) {
+			line = 25750;
+		} else if (house == 5) {
+			line = 30170;
+		} else if (house == 6) {
+			line = 34590;
+		} else if (house == 7) {
+			line = 39010;
+		} else if (house == 8) {
+			line = 43430;
+		} else if (house > 8) {
+			line = 47850 + (house-8)*4320;
+		}
+	
+		if (income <= (line*(percentage/100))) {
+			return true;
+		} else {
+			return false;
+		}
+	}	
+</script>	
+
+Q(name): Hi! What's your name?
+X:
+	Q(date): Hi <x>name</x>. What is today's date?
+	X:
+		Q(1.1.1): Thank you for this information <x>name</x>. This service is designed to help those involved in criminal court cases. Is the matter at hand currently being processed in an Iowa state court, or will the matter be handled in an Iowa state court eventually? 
+		A: Yes
+			Q(house): How many people are in <x>name</x>'s household?
+			X:number
+				Q(income): How much income does <x>name</x>'s household bring in per year in after tax dollars?
+				X:number
+					Q(house2): Is the person facing a civil or criminal matter?
+					A: Civil
+						Q(house2.1):GOTO:qualciv
+					A[javascript:if (fedpov(getvar('house'),getvar('income'),125)){ goto('qualcrim') } else if (fedpov(getvar('house'),getvar('income'),250)) { goto('noqualbut') } else { goto('noqualcrim') } ]: Criminal
+		A: No
+			Q(1.1.1.2):GOTO:qualaid
+
+Q(qualaid): This mechanic is designed to assist those involved in the Iowa state courts. Have a nice day. 
+
+Q(qualciv): Courts may start civil certain legal actions without requiring the petitioner or plaintiff to prepay filing fees.  A court may postpone fees in the interest of justice if a person cannot afford to pay.  If you cannot afford filing fees to begin a legal action, file a written Application to Defer Costs with the clerk of court and a judge will decide whether or not to postpone the fees. 
+
+Q(qualcrim): That person may qualify as indigent in Iowan state criminal courts unless the court determines that the person is able to pay for the cost of an attorney to represent the person on the pending case. Would you like to download a document with these results and more information?
+A[javascript:submit2('https://github.com/deanfiotto/ctl/blob/master/Coding%20doc.docx','POST','','','','json_doc','_blank')]: Yes.
+	
+A: No thank you. 
+	Q(qualcrim.1.2):GOTO:FINAL
+
+Q(qualbut): That person may not qualify as indigent unless the court makes a written finding that not appointing counsel on the pending case would cause the person substantial hardship. Would you like to know more about how the court may make such a determination?
+A: Yes.
+	Q(qualbut.1.1): In determining whether substantial hardship would result, the court shall consider not only the person’s income, but also the availability of any assets subject to execution, including but not limited to cash, stocks, bonds, and any other property which may be applied to the satisfaction of judgments, and the seriousness of the charge or nature of the case. 
+A: No thank you. 
+	Q(qualbut.1.2):GOTO:FINAL
+
+Q(noqualcrim): You probably won't qualify as indigent or indigent but able to contribute since you earn more than 200% of the poverty line. So you'll probably need to hire an attorney. Would you like to search for one near you?
+A:[https://www.avvo.com/find-a-lawyer] Yes.
+	Q(6.1):GOTO:nomore
+A: No
+	Q(6.2):GOTO:nomore
+
+Q(nomore): I'm afraid there's nothing else I can help you with. I hope you have a nice day.
+
+Q(FINAL): Thank you for using this service. Please keep in mind the following as it pertains to acquiring indigency status from an Iowa state court. A determination of whether a person is entitled to an appointed attorney shall be made on the basis of an affidavit of financial status submitted at the time of the person’s initial appearance or at such later time as a request for court appointment of counsel is made. The state public defender shall adopt rules prescribing the form and content of the affidavit of financial status. The affidavit of financial status shall be signed under penalty of perjury and shall contain sufficient information to allow the determination to be made of whether the person is entitled to an appointed attorney under this section. If the person is granted an appointed attorney, the affidavit of financial status shall be filed and permanently retained in the person’s court file.
